@@ -1,3 +1,5 @@
+package newoop;
+
 /**
  * Created by zhoumeng on
  * 2017/4/5.
@@ -6,7 +8,7 @@
 public class SuperClass {
     int i;
 
-//    public SuperClass(){
+//    public newoop.SuperClass(){
 //
 //    }
 
