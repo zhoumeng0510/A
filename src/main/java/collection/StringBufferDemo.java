@@ -1,11 +1,11 @@
-package newoop;
+package collection;
 
 /**
  * Created by zhoumeng on
  * 2017/4/8.
  * 8:53.
  */
-public class StringBufferDemo {
+class E3 {
     public static void main(String[] args) {
         StringBuffer stringBuffer = new StringBuffer("hello");//  实例 ； 初始化一个字符串
         stringBuffer.append(" world");

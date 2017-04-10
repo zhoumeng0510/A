@@ -1,4 +1,4 @@
-package newoop;
+package collection;
 
 /**
  * Created by zhoumeng on
