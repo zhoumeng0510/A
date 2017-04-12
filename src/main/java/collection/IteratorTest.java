@@ -13,27 +13,23 @@ public class IteratorTest {
         list.add("a");
         list.add("b");
 
-        Iterator<String>iterator = list.iterator();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
+        for (String aList1 : list) {
+            System.out.println(aList1);
         }
 
         TreeSet<String>set = new TreeSet<>();
         set.add("a");
         set.add("b");
 
-        Iterator<String>iterator1 = list.iterator();
-        while (iterator1.hasNext()) {
-            System.out.println(iterator1.next());
+        for (String aList : list) {
+            System.out.println(aList);
         }
 
         HashMap<Integer,String>map = new HashMap<>();
         map.put(1,"a");
         map.put(2,"bcd");
 
-        Iterator<Integer> iterator2 = map.keySet().iterator();
-        while (iterator2.hasNext()) {
-            int key =  iterator2.next();
+        for (Integer key : map.keySet()) {
             System.out.println(key + ">" + map.get(key));
         }
     }
