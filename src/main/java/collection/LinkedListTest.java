@@ -11,7 +11,6 @@ public class LinkedListTest {
         LinkedList<String> strings = new LinkedList<>();
         strings.add("a");
         strings.add("b");
-
         System.out.println(strings.size());
         System.out.println(strings.get(0));
 
