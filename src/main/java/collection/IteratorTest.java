@@ -8,6 +8,9 @@ import java.util.*;
  * 10:49.
  */
 public class IteratorTest {
+
+    private static final int KEY = 2;
+
     public static void main(String[] args) {
         ArrayList<String>list = new ArrayList<>();
         list.add("a");
@@ -27,7 +30,7 @@ public class IteratorTest {
 
         HashMap<Integer,String>map = new HashMap<>();
         map.put(1,"a");
-        map.put(2,"bcd");
+        map.put(KEY,"bcd");
 
         for (Integer key : map.keySet()) {
             System.out.println(key + ">" + map.get(key));
