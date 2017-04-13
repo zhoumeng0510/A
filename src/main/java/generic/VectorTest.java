@@ -1,4 +1,4 @@
-package java1702.javase.generic;
+package generic;
 
 import java.util.Vector;
 
