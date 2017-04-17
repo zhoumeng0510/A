@@ -8,14 +8,14 @@ import java.util.Date;
  * 8:36.
  */
 public class Test<T> {
-    //java1702.javase.generic  通用的；泛型
+    //generic  通用的；泛型
     //general  一般的；
 
     public static void main(String[] args) {
         Test test = new Test();
-        System.out.println(test.concat(1,2));
+        System.out.println(test.concat(1, 2));
         System.out.println(test.concat(1996, 510));
-        System.out.println(test.concat(new Date(),new Date()));
+        System.out.println(test.concat(new Date(), new Date()));
     }
 
     private String concat(T x, T y) {

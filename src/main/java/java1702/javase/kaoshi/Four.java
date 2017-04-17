@@ -1,126 +1,52 @@
 package java1702.javase.kaoshi;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by zhoumeng on
- * 2017/4/8.
- * 16:04.
+ * 2017/4/15.
+ * 8:52.
  */
-public interface Four{
-    public double num();
-}
-class Worker implements Four{
-    private double montherSalary;
-    public Worker(double montherSalary) {
-        super();
-        this.montherSalary = montherSalary;
-    }
-    public double num() {
-        return getMontherSalary()*12;
-    }
-    public double getMontherSalary() {
-        return montherSalary;
-    }
-    public void setMontherSalary(double montherSalary) {
-        this.montherSalary = montherSalary;
-    }
-}
-class Peasant implements Four{
-    private double montherSalary;
-    public Peasant(double montherSalary) {
-        super();
-        this.montherSalary = montherSalary;
-    }
-    public double getMontherSalary() {
-        return montherSalary;
-    }
-    public void setMontherSalary(double montherSalary) {
-        this.montherSalary = montherSalary;
-    }
-    public double num() {
-        return getMontherSalary()*12;
-    }
-}
-class Teacher implements Four{
-    private double montherSalary;
-    private double daySalary;
-
-    public Teacher(double montherSalary, double daySalary) {
-        super();
-        this.montherSalary = montherSalary;
-        this.daySalary = daySalary;
-    }
-    public double num() {
-        return getMontherSalary()*12+getDaySalary()*365;
-    }
-    public double getMontherSalary() {
-        return montherSalary;
-    }
-    public void setMontherSalary(double montherSalary) {
-        this.montherSalary = montherSalary;
-    }
-    public double getDaySalary() {
-        return daySalary;
-    }
-    public void setDaySalary(double daySalary) {
-        this.daySalary = daySalary;
-    }
-}
-class Scientist implements Four{
-    private double montherSalary;
-    private double projectSalary;
-    public Scientist(double montherSalary, double projectSalary) {
-        super();
-        this.montherSalary = montherSalary;
-        this.projectSalary = projectSalary;
-    }
-    public double num(){
-        return getMontherSalary()*12+getProjectSalary();
-    }
-    public double getMontherSalary() {
-        return montherSalary;
-    }
-    public void setMontherSalary(double montherSalary) {
-        this.montherSalary = montherSalary;
-    }
-    public double getProjectSalary() {
-        return projectSalary;
-    }
-    public void setProjectSalary(double projectSalary) {
-        this.projectSalary = projectSalary;
-    }
-}
-class Waiter implements Four{
-    private double montherSalary;
-    public Waiter(double montherSalary) {
-        super();
-        this.montherSalary = montherSalary;
-    }
-    public double num() {
-        return getMontherSalary()*12;
-    }
-    public double getMontherSalary() {
-        return montherSalary;
-    }
-    public void setMontherSalary(double montherSalary) {
-        this.montherSalary = montherSalary;
-    }
-}
-class Test {
+//输入一段字符串，字符串中只包含大小写字母。
+// 要求完成函数删除给定字符串中出现次数最少的字符。
+// 输出删除完的字符串。如果有多个出现次数一样的字符，都为最少时，一并删除。
+// 例如：输入:abbccd，输出为bbcc
+public class Four {
     public static void main(String[] args) {
-        Test a = new Test();
-        Worker w = new Worker(1000);
-        System.out.println("工人：" + w.num()+"元");
+        Four text = new Four();
+        String result = text.getMinString();
+        System.out.println(result);
+    }
 
-        Peasant p = new Peasant(2500);
-        System.out.println("农民："+p.num()+"元");
+    private String getMinString() {
+        System.out.println("原字符串:" + "abbccd");
+        char[] chars = "abbccd".toCharArray();
+        List<String> list = new ArrayList<>();
+        for (char char1 : chars) list.add(char1 + "");
+        int minTime = 0;
+        int[] count = new int[list.size()];
+        for (int i = 0; i < count.length; i++)
+            count[i] = 0;
 
-        Teacher t = new Teacher(4500,50);
-        System.out.println("教师："+t.num()+"元");
+        for (int i = 0; i < list.size(); i++) {
+            for (String aList : list) {
+                if (list.get(i).equals(aList))
+                    count[i]++;
+            }
+            minTime = count[1];
+            if (minTime >= count[i])
+                minTime = count[i];
+        }
+        System.out.println("每个字母出现的次数：" + Arrays.toString(count));
+        System.out.println("字母出现的最少次数：" + minTime);
 
-        Scientist e = new Scientist(10500,30000);
-        System.out.println("科学家：" + e.num()+"元");
-
-        Waiter y = new Waiter(3400);
-        System.out.println("服务生：" + y.num()+ "元");
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < count.length; i++) {
+            if (count[i] > minTime)
+                stringBuilder.append(list.get(i));
+        }
+        return stringBuilder.toString();
     }
 }
