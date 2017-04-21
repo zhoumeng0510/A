@@ -12,5 +12,9 @@ public class DataTest {
     public static void main(String[] args) {
         DataInputStream dataInputStream = new DataInputStream(System.in);
         DataOutputStream dataOutputStream = new DataOutputStream(System.out);
+
+//        dataInputStream.
+//                dataOutputStream.
+//                RandomAccessFile randomAccessFile
     }
 }
