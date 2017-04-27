@@ -1,6 +1,8 @@
 package java1702.javase.kaoshi.day422;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.util.*;
 
 /**
  * Created by zhoumeng on
@@ -13,7 +15,7 @@ import java.io.*;
 (2)从文件中读取这5000个整数,并计算其最大值、最小值和平均值并输出结果。
  */
 public class E4 {
-    static int max, min, sum = 0;
+    /*static int max, min, sum = 0;
     static int[] a = new int[5000];
     public static void main(String args[]) {
         File f = new File("a.txt");
@@ -63,5 +65,43 @@ public class E4 {
         System.out.println("最大值："+max);
         System.out.println("最小值："+min);
         System.out.println("平均值："+average);
+    }*/
+    private static  final int N = 5000;
+    public static void main(String[] args) {
+
+        int sum = 0;
+        int min = 9998;
+        int max = 2;
+        List<Integer> list = new ArrayList<>();
+        Set<Integer> set = new TreeSet<>();
+        try (RandomAccessFile raf = new RandomAccessFile("a.txt", "rw")) {
+            for (int i = 0; i < N; i++) {
+                int r = (int) (Math.random() * 9997) + 2;
+                raf.writeInt(r);
+            }
+            raf.seek(0);
+            for (int i = 0; i < N; i++) {
+                int r = raf.readInt();
+                list.add(r);
+                set.add(r);
+                if (r < min) {
+                    min = r;
+                }
+                if (r > max) {
+                    max = r;
+                }
+                sum += r;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(min + ":" + max);
+        Collections.sort(list);
+        System.out.println(Collections.min(list) + ":" + Collections.max(list));
+        System.out.println(sum / N);
+        for (Integer r : set) {
+            System.out.println(r);
+        }
+        System.out.println(set.size());
     }
 }
