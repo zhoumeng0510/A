@@ -1,6 +1,7 @@
 package java1702.javase.reflect;
 
-import java.lang.reflect.Field;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Parameter;
 
 /**
  * Created by zhoumeng on
@@ -67,18 +68,59 @@ public class Human extends Animals {
 }
 
 class HumanTest {
-    public static void main(String[] args) {
+     /*
+    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
         Human human = new Human();
-        Class clazz= human.getClass();
-        Field[] fields=clazz.getFields();
-        System.out.println("----getFields()----");
+        Class clazz = human.getClass();
+        Field[] fields = clazz.getFields();
+        System.out.println("--- getFields() ---");
         for (Field field : fields) {
             System.out.println(field.getName());
         }
-        Field[] declaredFields = clazz.getDeclaredFields();
-        System.out.println("----getDeclareFields()----");
+        Field[] declaredFields = clazz.getDeclaredFields(); // declared 宣布\ [dɪ'kleəd] 声明
+        System.out.println("--- getDeclaredFields() ---");
         for (Field declaredField : declaredFields) {
             System.out.println(declaredField.getName());
         }
+        List<Integer> list = new ArrayList<>();
+//        Field array = list.getClass().getDeclaredField("elementData");
+        Field array = ArrayList.class.getDeclaredField("elementData");
+        array.setAccessible(true);
+        System.out.println("list capacity: " + ((Object[]) array.get(list)).length); // 10
+        Vector<String> vector = new Vector<>();
+        vector.add("hi");
+        System.out.println(vector.size());
+        System.out.println(vector.capacity());
+    }*/
+
+    public static void main(String[] args) throws NoSuchMethodException {
+        Class clazz = Human.class;
+
+        Constructor[] constructors = clazz.getConstructors();
+        System.out.println("-- getConstructors() ---");
+        for (Constructor constructor : constructors) {
+            System.out.println(constructor.getName());
+            for (Parameter parameter : constructor.getParameters()) {
+                System.out.println("\t" + parameter);
+            }
+        }
+
+        Constructor[] declaredConstructors = clazz.getDeclaredConstructors();
+        System.out.println("-- getDeclaredConstructors() ---");
+        for (Constructor constructor : declaredConstructors) {
+            System.out.println(constructor.getName());
+            for (Parameter parameter : constructor.getParameters()) {
+                System.out.println("\t" + parameter.getName());
+            }
+        }
+
+        Constructor constructor = clazz.getDeclaredConstructor(int.class, double.class, String.class, boolean.class);
+        System.out.println(constructor.getName());
+        for (Parameter parameter : constructor.getParameters()) {
+            System.out.println(parameter);
+        }
+
+        // constructor - object
+//        Human human =
     }
 }
