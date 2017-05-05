@@ -26,6 +26,7 @@ public class Service {
             method.invoke(constructor.newInstance());
         } catch (IOException | ClassNotFoundException | InvocationTargetException | InstantiationException | IllegalAccessException | NoSuchMethodException e) {
             e.printStackTrace();
+
         }
     }
 }
