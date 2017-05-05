@@ -1,4 +1,4 @@
-package java1702.javase.reflect.deom.a;
+package java1702.javase.reflect.demo.a;
 
 /**
  * Created by zhoumeng on
@@ -8,7 +8,8 @@ package java1702.javase.reflect.deom.a;
  */
 public class Test {
     public static void main(String[] args) {
-        Service service = new Service();
+//        Service service = new Service(new FloppyWriter());
+        Service service = new Service(new PortableHdWriter());
         service.write();
     }
 }

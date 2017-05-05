@@ -1,4 +1,4 @@
-package java1702.javase.reflect.deom.a;
+package java1702.javase.reflect.demo.a;
 
 /**
  * Created by zhoumeng on
