@@ -7,7 +7,8 @@ package java1702.javase;
  */
 public class A {
     public static void main(String[] args) {
-        int[] x = new int[20];
-        System.out.println(x[19]);
+        for (int i = 0; i < 100; i++) {
+            System.out.println("我说"+i+"你说"+(i+1));
+        }
     }
 }
